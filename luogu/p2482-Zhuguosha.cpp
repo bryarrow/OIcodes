@@ -3,7 +3,7 @@
 
 using namespace std;
 
-enum ID {MP,FP,ZP};
+enum ID {MP,FP,ZP,null};
 
 struct Cards{
 
@@ -19,6 +19,7 @@ struct Cards{
 	void printf(){
 		for(int i=num;i>0;i--){
 			std::cout << plarcards[i-1] ;
+			if(i > 2)cout << " ";
 		}
 	}
 
@@ -26,10 +27,16 @@ struct Cards{
 
 istream& operator>> (istream &in,Cards& cards){
 		char ch;
+		in.get(ch);
 
-		while(in >> ch){
-			cards.plarcards[cards.num] = ch;
-			cards.num++;
+		while(ch != '\n' && !in.eof()){
+			
+			if(ch != ' '){
+				cards.plarcards[cards.num] = ch;
+				cards.num++;
+			}
+			
+			in.get(ch);
 		}
 
 		return in;
@@ -37,7 +44,7 @@ istream& operator>> (istream &in,Cards& cards){
 
 class Pig{
 	public:
-	Pig(Cards cards,ID nid):mycards(cards),id(nid){};
+	Pig(Cards cards,ID nid):mycards(cards),id(nid){be_konwn = null;}
 	private:
 	Cards mycards;
 	ID id;
@@ -57,11 +64,21 @@ int main(){
 		int n,m;
 		cin>>n>>m;
 		// input pigs
-		// for(int i=0;i<n;i++){
-		// 	char id[3];
-		// 	cin >> id;
-			
-		// }
+		for(int i=0;i<n;i++){
+			char id[3];
+			Cards tcards;
+			cin >> id;
+			cin >> tcards;
+			if(id == "MP"){
+
+			}
+			if(id == "ZP"){
+
+			}
+			if(id == "FP"){
+
+			}
+		}
 		// input playcards
 		// for(int i=0;i<m;i++){
 			// char card;
