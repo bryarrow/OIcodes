@@ -17,8 +17,8 @@ struct Cards{
 	}
 
 	void printf(){
-		for(int i=num;i>=0;i--){
-			std::printf("%s",plarcards[i-1]);
+		for(int i=num;i>0;i--){
+			std::cout << plarcards[i-1] ;
 		}
 	}
 
@@ -26,12 +26,10 @@ struct Cards{
 
 istream& operator>> (istream &in,Cards& cards){
 		char ch;
-		in >> ch;
 
-		while(ch != '\n'){
+		while(in >> ch){
 			cards.plarcards[cards.num] = ch;
 			cards.num++;
-			in >> ch;
 		}
 
 		return in;
@@ -49,10 +47,10 @@ class Pig{
 
 int main(){
 	
-	// #ifdef _DEBUG
-	// freopen("./p2482.in","r",stdin);
-	// freopen("./p2482.out","w",stdout);
-	// #endif
+	#ifdef _DEBUG
+	freopen("./luogu/p2482.in","r",stdin);
+	freopen("./luogu/p2482.out","w",stdout);
+	#endif
 
 	Cards cards;
 	/*input*/{
@@ -71,6 +69,8 @@ int main(){
 			// cards = cards + card;
 			cin >> cards;
 		// }
+
+		cards.printf();
 	}
 	return 0;
 }
